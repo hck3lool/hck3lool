@@ -1,4 +1,3 @@
-#!bin/bash
 #title           :xray_integration.sh
 #description     :This script will export robot framework results to Jira Cloud.
 #author		     :rahernandez

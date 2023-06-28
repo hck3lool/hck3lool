@@ -1,4 +1,3 @@
-#!bin/bash
 #title           :cleaner.sh
 #description     :This script will clean a given directory.
 #author		     :rahernandez
