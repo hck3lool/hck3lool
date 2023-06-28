@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM') {
+            steps {
+                cleanWs()
+                checkout scmGit(branches: [[name: '*/feature/robotframework']], extensions: [], userRemoteConfigs: [[credentialsId: '2081a990-806b-4506-881d-04a145e2bff9', url: 'https://github.com/hck3lool/hck3lool.git']])
+            }
+        }
+        stage('Static Code Analysis') {
+            steps {
+                bat "rflint RobotFramework/concept_proof/test.robot"
+            }
+        }
+        stage('Test') {
+            steps {
+                bat "robot RobotFramework/concept_proof/test.robot"
+            }
+        }
+        stage('Publish') {
+            steps {
+                bat "robotmetrics"
+                robot archiveDirName: 'robot-plugin', outputPath: '.', overwriteXAxisLabel: '', passThreshold: 100.0, unstableThreshold: 90.0
+                archiveArtifacts artifacts: 'output.xml, log.html, report.html, metrics*.html', followSymlinks: false
+            }
+        }
+    }
+}
