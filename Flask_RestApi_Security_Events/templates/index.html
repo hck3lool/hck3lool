@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
+<div class="contenedor">
+    <div class="w3-container w3-lobster">
+        <p class="w3-xxxlarge" align="center">Registro de Eventos de Seguridad</p>
+    </div>
+    <table>
+        <tr>
+            <th>Numero de Colaborador</th>
+            <th>Tipo de Evento</th>
+            <th>Descripcion</th>
+            <th>Hora de registro</th>
+            <th>Fecha de registro</th>
+            <th>Eliminar registro</th>
+            <th>Actualizar datos</th>
+        </tr>
+        {%for item in datos%}
+        <tr>
+            <td>{{item.colaborador}}</td>
+            <td>{{item.tipo_de_evento}}</td>
+            <td>{{item.descripcion}}</td>
+            <td>{{item.hora}}</td>
+            <td>{{item.fecha}}</td>
+            <td>
+                <div class="w3-container">
+                    <a href="/borrar/{{item.id}}" class="w3-button w3-grey">Eliminar</a>
+                </div>
+            </td>
+            <td>
+                <div class="w3-container">
+                    <a href="/actualizar/{{item.id}}" class="w3-button w3-cyan">Actualizar</a>
+                </div>
+            </td>
+        </tr>
+        {%endfor%}
+    </table>
+    <br>
+    <br>
+    <br>
+
+    <div class="form">
+        <form action="/" method="POST" align='center'>
+            <label for="colaborador">Numero de Colaborador</label>
+            <input type="text" name='colaborador' id='colaborador' size='5'>
+            &nbsp;&nbsp;
+            <label for="tipo_de_evento">Tipo de Evento</label>
+            <select id="tipo_de_evento" name="tipo_de_evento">
+                <option value="Denegacion de servicio">servicio</option>
+                <option value="Recopilacion de informacion">informacion</option>
+                <option value="Acceso no autorizado">acceso</option>
+            </select>
+            &nbsp;&nbsp;
+            <label for="descripcion">Descripcion</label>
+            <input type="text" name='descripcion' id="descripcion" size='25'>
+            <input type='submit' value='Agregar datos'>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

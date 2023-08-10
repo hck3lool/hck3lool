@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
+<div class="contenedor">
+    <div class="w3-container w3-lobster">
+        <p class="w3-xxxlarge" align="center">Actualizar Datos</p>
+    </div>
+    <div class="form" align="center">
+        <form action="/actualizar/{{task.id}}" method="POST">
+            <label for="colaborador">Numero de Colaborador</label>
+            <input type="text" name='colaborador' id='colaborador' size='5'>
+            &nbsp;&nbsp;
+            <label for="tipo_de_evento">Tipo de Evento</label>
+            <select id="tipo_de_evento" name="tipo_de_evento">
+                <option value="Denegacion de servicio">servicio</option>
+                <option value="Recopilacion de informacion">informacion</option>
+                <option value="Acceso no autorizado">acceso</option>
+            </select>
+            &nbsp;&nbsp;
+            <label for="descripcion">Descripcion</label>
+            <input type="text" name='descripcion' id="descripcion" size='25'>
+            <input type='submit' value='Agregar datos'>
+        </form>
+    </div>
+</div>
+{% endblock %}
