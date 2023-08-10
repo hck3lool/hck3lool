@@ -3,13 +3,13 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] ='sqlite:///todo.db'
 db = SQLAlchemy(app)
 
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     nombre = db.Column(db.String(20), nullable = False)
-    edad = db.Column(db.Integer, nullable = False) 
+    edad = db.Column(db.Integer, nullable = False)
     sexo = db.Column(db.String(1), nullable = False)
     nacionalidad = db.Column(db.String(20), nullable = False)
     provincia = db.Column(db.String(20), nullable = False)
@@ -21,7 +21,7 @@ class Todo(db.Model):
 @app.route('/', methods=['POST','GET'])
 def index():
     if request.method == 'POST':
-       nombre_registrado = request.form['nombre'] 
+       nombre_registrado = request.form['nombre']
        edad_registrada = request.form['edad']
        sexo_registrado = request.form['sexo']
        nacionalidad_registrada = request.form['nacionalidad']
@@ -41,7 +41,7 @@ def index():
 @app.route('/borrar/<int:id>')
 def borrar(id):
     tarea_a_eliminar = Todo.query.get_or_404(id)
-    
+
     try:
         db.session.delete(tarea_a_eliminar)
         db.session.commit()
@@ -67,6 +67,8 @@ def actualizar(id):
 
     else:
         return render_template("update.html", task = task)
-    
+
 if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)

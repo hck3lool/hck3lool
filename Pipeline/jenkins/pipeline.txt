@@ -18,6 +18,13 @@ pipeline {
                 bat "robot RobotFramework/concept_proof/test.robot"
             }
         }
+        stage('Export results to Jira') {
+            steps {
+                bat "cp output.xml $WORKSPACE/RobotFramework/concept_proof"
+                bat "sh RobotFramework/concept_proof/xray_integration.sh RF3-16"
+            }
+        }
+        
         stage('Publish') {
             steps {
                 bat "robotmetrics"
