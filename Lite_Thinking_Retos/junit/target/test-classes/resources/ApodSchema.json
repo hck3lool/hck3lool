@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Json Schema para aplicacion APOD de la NASA",
+    "type": "object",
+    "required": [
+      "date",
+      "explanation",
+      "hdurl",
+      "media_type",
+      "service_version",
+      "title",
+      "url"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "date": {
+        "type": "string"
+      },
+      "explanation": {
+        "type": "string"
+      },
+      "hdurl": {
+        "type": "string"
+      },
+      "media_type": {
+        "type": "string"
+      },
+      "service_version": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "url": {
+        "type": "string"
+      }
+    }
+  }

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.litethinking</groupId>
-    <artifactId>junit</artifactId>
+    <artifactId>command</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -29,18 +29,13 @@
             <version>4.17.0</version>
         </dependency>
 
-        <!--  https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-report-plugin -->
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-report-plugin -->
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-report-plugin</artifactId>
             <version>3.2.5</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.everit.json/org.everit.json.schema -->
-        <dependency>
-            <groupId>org.everit.json</groupId>
-            <artifactId>org.everit.json.schema</artifactId>
-            <version>1.5.1</version>
-        </dependency>
     </dependencies>
+
 </project>
