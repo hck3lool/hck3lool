@@ -1,0 +1,6 @@
+export const inputUsername = '#username'
+export const inputPassword = '#password'
+export const toastMessage = '#flash'
+export const labeltitle = 'h2'
+export const buttonLogIn = 'button'
+export const buttonLogOut = '.button'
